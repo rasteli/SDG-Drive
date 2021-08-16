@@ -6,10 +6,18 @@ import logo from "../../sdg.svg"
 export default function NavbarComponent() {
   return (
     <Navbar bg="light" expand="sm" className="p-3">
-      <Navbar.Brand as={Link} to="/" style={{ marginRight: "100px" }}>
+      <Navbar.Brand
+        as={Link}
+        to="/"
+        style={{
+          marginRight: "100px",
+          marginBottom: "-20px",
+          marginTop: "-15px"
+        }}
+      >
         <img
           src={logo}
-          alt=""
+          alt="logo"
           style={{
             transform: "scale(.7)",
             marginLeft: "-15px",
