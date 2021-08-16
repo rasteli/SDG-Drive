@@ -24,7 +24,6 @@ export default function Dashboard() {
           <AddFile currentFolder={folder} />
           <AddFolder currentFolder={folder} />
         </div>
-        {console.log(childFolders.length)}
         {childFolders.length > 0 && (
           <div className="d-flex flex-wrap">
             {childFolders.map(childFolder => (
