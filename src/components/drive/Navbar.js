@@ -26,11 +26,17 @@ export default function NavbarComponent() {
         />
         SDG Drive
       </Navbar.Brand>
-      <Nav>
-        <Nav.Link as={Link} to="/profile" style={{ marginTop: "1.2px" }}>
-          Profile
-        </Nav.Link>
-      </Nav>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav>
+          <Nav.Link as={Link} to="/profile" style={{ marginTop: "1.2px" }}>
+            Profile
+          </Nav.Link>
+          <Nav.Link as={Link} to="/contact" style={{ marginTop: "1.2px" }}>
+            Contact Us
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   )
 }
