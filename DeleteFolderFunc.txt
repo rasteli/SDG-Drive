@@ -1,0 +1,31 @@
+import getFilePath from "../../utils/getFilePath"
+import { database, storage } from "../../firebase"
+import { useAuth } from "../../contexts/AuthContext"
+
+// ↓ inside react component ↓ \\
+
+const { currentUser } = useAuth()
+
+function handleDelete() {
+  database.folders
+    .doc(id)
+    .delete()
+    .then(() => {
+      database.files
+        .where("userId", "==", currentUser.uid)
+        .where("folderId", "==", id)
+        .get()
+        .then(files => {
+          if (files) {
+            files.forEach(file => {
+              file.ref.delete()
+
+              const path = getFilePath(folder, file.data(), currentUser)
+
+              storage.ref(path).delete()
+            })
+          }
+        })
+    })
+    .catch(error => console.log(error))
+}
