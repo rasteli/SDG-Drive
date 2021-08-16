@@ -66,10 +66,10 @@ export default function AddFolder({ currentFolder }) {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="info" onClick={closeModal}>
+            <Button variant="secondary" onClick={closeModal}>
               Close
             </Button>
-            <Button variant="success" type="submit">
+            <Button variant="info" type="submit">
               Add folder
             </Button>
           </Modal.Footer>
