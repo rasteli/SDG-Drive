@@ -27,7 +27,7 @@ export default function NavbarComponent() {
         SDG Drive
       </Navbar.Brand>
       <Nav>
-        <Nav.Link as={Link} to="/profile">
+        <Nav.Link as={Link} to="/profile" style={{ marginTop: "1.2px" }}>
           Profile
         </Nav.Link>
       </Nav>
