@@ -1,7 +1,10 @@
 import React, { useRef, useState } from "react"
-import { Card, Button, Form, Alert } from "react-bootstrap"
+import { Card, Button, Form, Alert, InputGroup } from "react-bootstrap"
 import { Link, useHistory } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons"
 
+import GoogleLoginButton from "./GoogleLoginButton"
 import { useAuth } from "../../contexts/AuthContext"
 import CenteredContainer from "./CenteredContainer"
 
@@ -9,7 +12,7 @@ export default function SignUp() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { signup } = useAuth()
+  const { signup, login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -38,29 +41,68 @@ export default function SignUp() {
     <CenteredContainer>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Sign Up</h2>
+          <h2 className="mb-5">
+            Set up your <br /> SDG Drive account
+          </h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password" className="mt-2">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Form.Group id="password-confirm" className="mt-2">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
-            </Form.Group>
-            <Button disabled={loading} className="w-100 mt-2" type="submit">
+            <InputGroup id="email">
+              <InputGroup.Text>
+                <FontAwesomeIcon icon={faEnvelope} />
+              </InputGroup.Text>
+              <Form.Control
+                placeholder="Email"
+                type="email"
+                ref={emailRef}
+                size="lg"
+                required
+              />
+            </InputGroup>
+            <InputGroup id="password" className="mt-3">
+              <InputGroup.Text>
+                <FontAwesomeIcon icon={faKey} />
+              </InputGroup.Text>
+              <Form.Control
+                placeholder="Password"
+                type="password"
+                ref={passwordRef}
+                size="lg"
+                required
+              />
+            </InputGroup>
+            <InputGroup id="password-confirm" className="mt-3">
+              <InputGroup.Text>
+                <FontAwesomeIcon icon={faKey} />
+              </InputGroup.Text>
+              <Form.Control
+                placeholder="Password Confirmation"
+                type="password"
+                ref={passwordConfirmRef}
+                size="lg"
+                required
+              />
+            </InputGroup>
+            <Button disabled={loading} className="w-100 mt-4" type="submit">
               Sign Up
             </Button>
+            <GoogleLoginButton
+              signup={signup}
+              login={login}
+              history={history}
+              setError={setError}
+            />
           </Form>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account?{" "}
+        <Link
+          to="/login"
+          className="text-decoration-none"
+          style={{ color: "#0d4afc", fontWeight: "bold" }}
+        >
+          Login
+        </Link>
       </div>
     </CenteredContainer>
   )

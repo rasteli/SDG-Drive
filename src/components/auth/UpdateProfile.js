@@ -49,31 +49,34 @@ export default function UpdateProfile() {
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <strong>Email</strong>
               <Form.Control
                 type="email"
+                size="lg"
                 ref={emailRef}
                 defaultValue={currentUser.email}
                 required
               />
             </Form.Group>
-            <Form.Group id="password" className="mt-2">
-              <Form.Label>Password</Form.Label>
+            <Form.Group id="password" className="mt-3">
+              <strong>Password</strong>
               <Form.Control
                 type="password"
+                placeholder="Leave blank to keep password"
+                size="lg"
                 ref={passwordRef}
-                placeholder="Leave blank to keep password"
               />
             </Form.Group>
-            <Form.Group id="password-confirm" className="mt-2">
-              <Form.Label>Password Confirmation</Form.Label>
+            <Form.Group id="password-confirm" className="mt-3">
+              <strong>Password Confirmation</strong>
               <Form.Control
                 type="password"
-                ref={passwordConfirmRef}
                 placeholder="Leave blank to keep password"
+                size="lg"
+                ref={passwordConfirmRef}
               />
             </Form.Group>
-            <Button disabled={loading} className="w-100 mt-2" type="submit">
+            <Button disabled={loading} className="w-100 mt-3" type="submit">
               Update
             </Button>
           </Form>

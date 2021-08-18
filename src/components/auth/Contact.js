@@ -57,7 +57,7 @@ export default function Contact() {
           {message && <Alert variant="success">{message}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <strong>Email</strong>
               <Form.Control
                 type="email"
                 defaultValue={currentUser.email}
@@ -65,7 +65,7 @@ export default function Contact() {
               />
             </Form.Group>
             <Form.Group className="mt-2">
-              <Form.Label>Describe your issue</Form.Label>
+              <strong>Describe your issue</strong>
               <Form.Control
                 as="textarea"
                 rows={8}

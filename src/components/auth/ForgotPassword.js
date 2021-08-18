@@ -32,15 +32,24 @@ export default function ForgotPassword() {
     <CenteredContainer>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Reset password</h2>
+          <h2 className="text-center mb-4">Forgot password?</h2>
           {message && <Alert variant="success">{message}</Alert>}
           {error && <Alert variant="danger">{error}</Alert>}
+          <div className="text-muted mb-3">
+            Enter the email associated with your account and we'll send you an
+            email with instructions to reset your password
+          </div>
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <Form.Control
+                placeholder="Email"
+                size="lg"
+                type="email"
+                ref={emailRef}
+                required
+              />
             </Form.Group>
-            <Button disabled={loading} className="w-100 mt-2" type="submit">
+            <Button disabled={loading} className="w-100 mt-4" type="submit">
               Reset
             </Button>
           </Form>
@@ -50,7 +59,14 @@ export default function ForgotPassword() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Don't have an account? <Link to="/signup">Sign Up</Link>
+        Don't have an account?{" "}
+        <Link
+          to="/signup"
+          className="text-decoration-none"
+          style={{ color: "#0d4afc", fontWeight: "bold" }}
+        >
+          Sign Up
+        </Link>
       </div>
     </CenteredContainer>
   )
