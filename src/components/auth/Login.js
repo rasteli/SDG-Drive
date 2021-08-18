@@ -4,14 +4,13 @@ import { Link, useHistory } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons"
 
-import GoogleLoginButton from "./GoogleLoginButton"
 import { useAuth } from "../../contexts/AuthContext"
 import CenteredContainer from "./CenteredContainer"
 
 export default function SignUp() {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const { login, signup } = useAuth()
+  const { login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -73,12 +72,6 @@ export default function SignUp() {
             >
               Forgot password?
             </Link>
-            <GoogleLoginButton
-              signup={signup}
-              login={login}
-              history={history}
-              setError={setError}
-            />
           </Form>
         </Card.Body>
       </Card>
