@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react"
-import { Card, Button, Form, Alert } from "react-bootstrap"
+import { Card, Button, Form, Alert, InputGroup } from "react-bootstrap"
 import { Link, useHistory } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons"
 import { useAuth } from "../../contexts/AuthContext"
 import CenteredContainer from "./CenteredContainer"
 
@@ -48,8 +50,10 @@ export default function UpdateProfile() {
           <h2 className="text-center mb-4">Update profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <strong>Email</strong>
+            <InputGroup id="email">
+              <InputGroup.Text>
+                <FontAwesomeIcon icon={faEnvelope} />
+              </InputGroup.Text>
               <Form.Control
                 type="email"
                 size="lg"
@@ -57,25 +61,29 @@ export default function UpdateProfile() {
                 defaultValue={currentUser.email}
                 required
               />
-            </Form.Group>
-            <Form.Group id="password" className="mt-3">
-              <strong>Password</strong>
+            </InputGroup>
+            <InputGroup id="password" className="mt-3">
+              <InputGroup.Text>
+                <FontAwesomeIcon icon={faKey} />
+              </InputGroup.Text>
               <Form.Control
                 type="password"
                 placeholder="Leave blank to keep password"
                 size="lg"
                 ref={passwordRef}
               />
-            </Form.Group>
-            <Form.Group id="password-confirm" className="mt-3">
-              <strong>Password Confirmation</strong>
+            </InputGroup>
+            <InputGroup id="password-confirm" className="mt-3">
+              <InputGroup.Text>
+                <FontAwesomeIcon icon={faKey} />
+              </InputGroup.Text>
               <Form.Control
                 type="password"
                 placeholder="Leave blank to keep password"
                 size="lg"
                 ref={passwordConfirmRef}
               />
-            </Form.Group>
+            </InputGroup>
             <Button disabled={loading} className="w-100 mt-3" type="submit">
               Update
             </Button>
