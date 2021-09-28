@@ -7,7 +7,7 @@ import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons"
 import { useAuth } from "../../contexts/AuthContext"
 import CenteredContainer from "./CenteredContainer"
 
-export default function SignUp() {
+export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
@@ -76,7 +76,7 @@ export default function SignUp() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Don't have an account?{" "}
+        Don't have an account?
         <Link
           to="/signup"
           className="text-decoration-none"
